@@ -45,3 +45,10 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+/src/ProjetEJB/nbproject/private/
+/src/EJBProject/nbproject/private/
+/src/EJBProject/EJBProject-war/nbproject/private/
+/src/EJBProject/EJBProject-ejb/nbproject/private/
+/src/EJBProject/EJBProject-war/build/
+/src/EJBProject/EJBProject-ejb/dist/
+/src/EJBProject/EJBProject-ejb/build/
