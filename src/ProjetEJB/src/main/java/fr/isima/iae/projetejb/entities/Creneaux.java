@@ -36,6 +36,9 @@ public class Creneaux implements Serializable{
     @JoinColumn(name = "idMedecin") 
     private Medecin medecin;
     
+    @OneToMany(mappedBy = "creneaux", fetch = FetchType.LAZY)
+    private Collection<RDV> rdvs;
+    
     public Creneaux() {
     }
 

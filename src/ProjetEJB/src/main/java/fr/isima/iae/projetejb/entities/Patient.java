@@ -29,6 +29,9 @@ public class Patient implements Serializable{
     
     private String prenom;   
 
+    @OneToMany(mappedBy="patient",fetch=FetchType.LAZY)
+    private transient Collection<RDV> rdvs;
+    
     public Patient() {
     }
     public Patient(String nom, String prenom) {
@@ -60,4 +63,11 @@ public class Patient implements Serializable{
         this.prenom = prenom;
     }
     
+    public Collection<RDV> getRdvs() {
+        return rdvs;
+    }
+    
+    public void setRdvs(Collection<RDV> rdvs) {
+        this.rdvs = rdvs;
+    }
 }

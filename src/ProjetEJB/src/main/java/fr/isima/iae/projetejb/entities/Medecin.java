@@ -6,10 +6,13 @@
 package fr.isima.iae.projetejb.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -25,6 +28,9 @@ public class Medecin implements Serializable {
     private String nom;
     
     private String prenom;
+    
+    @OneToMany(mappedBy = "medecin", fetch = FetchType.LAZY)
+    private transient Collection<Creneaux> crenaux;
 
     public Medecin() {
     }
@@ -57,8 +63,12 @@ public class Medecin implements Serializable {
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
-    
-    
-   
-    
+        
+    public Collection<Creneaux> getCrenaux() {
+        return crenaux;
+    }
+
+    public void setCrenaux(Collection<Creneaux> crenaux) {
+        this.crenaux = crenaux;
+    }
 }

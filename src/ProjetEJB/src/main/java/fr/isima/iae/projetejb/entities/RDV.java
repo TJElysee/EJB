@@ -72,4 +72,16 @@ public class RDV {
     public Patient getPatient() {
         return patient;
     }
+    
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+    
+    public Creneaux getCreneau() {
+        return creneau;
+    }
+
+    public void setCreneau(Creneaux creneau) {
+        this.creneau = creneau;
+    }
 }
