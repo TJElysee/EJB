@@ -44,8 +44,8 @@ public class PatientTest extends TestCase {
      */
     public void testGetNom() {
         System.out.println("getNom");
-        Patient instance = new Patient();
-        String expResult = "";
+        Patient instance = new Patient("Elysee", "Jonas");
+        String expResult = "Elysee";
         String result = instance.getNom();
         assertEquals(expResult, result);
     }
@@ -55,8 +55,8 @@ public class PatientTest extends TestCase {
      */
     public void testGetPrenom() {
         System.out.println("getPrenom");
-        Patient instance = new Patient();
-        String expResult = "";
+        Patient instance = new Patient("Elysee", "Jonas");
+        String expResult = "Jonas";
         String result = instance.getPrenom();
         assertEquals(expResult, result);
     }
