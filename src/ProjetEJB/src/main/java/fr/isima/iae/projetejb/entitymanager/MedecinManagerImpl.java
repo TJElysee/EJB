@@ -7,22 +7,24 @@ package fr.isima.iae.projetejb.entitymanager;
 
 import fr.isima.iae.projetejb.entities.Medecin;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 /**
  *
- * @author User
+ * @author Users
  */
+@Stateless(name = "Medecin")
 public class MedecinManagerImpl implements IMedecinManager{
 
-    @PersistenceContext(unitName = "UP")
+    //@PersistenceContext(unitName = "UP")
     private EntityManager em;
     
     @Override
     public List<Medecin> getAllMedecins() {
-        Query q = em.createQuery("select m from Medecin");
+        Query q = em.createQuery("select m from Medecin m");
         return q.getResultList(); 
     }
 
