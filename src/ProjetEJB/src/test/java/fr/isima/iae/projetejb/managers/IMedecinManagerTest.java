@@ -13,9 +13,9 @@ import junit.framework.TestCase;
  *
  * @author Paul
  */
-public class MedecinManagerImplTest extends TestCase {
+public class IMedecinManagerTest extends TestCase {
     
-    public MedecinManagerImplTest(String testName) {
+    public IMedecinManagerTest(String testName) {
         super(testName);
     }
     
@@ -30,61 +30,83 @@ public class MedecinManagerImplTest extends TestCase {
     }
 
     /**
-     * Test of getAllMedecins method, of class MedecinManagerImpl.
+     * Test of getAllMedecins method, of class IMedecinManager.
      */
-    public void testGetAllMedecins() throws Exception {
+    public void testGetAllMedecins() {
         System.out.println("getAllMedecins");
-        MedecinManagerImpl instance = new MedecinManagerImpl();
+        IMedecinManager instance = new IMedecinManagerImpl();
         List<Medecin> expResult = null;
         List<Medecin> result = instance.getAllMedecins();
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of addMedecin method, of class MedecinManagerImpl.
+     * Test of addMedecin method, of class IMedecinManager.
      */
-    public void testAddMedecin() throws Exception {
+    public void testAddMedecin() {
         System.out.println("addMedecin");
         Medecin medecin = null;
-        MedecinManagerImpl instance = new MedecinManagerImpl();
+        IMedecinManager instance = new IMedecinManagerImpl();
         int expResult = 0;
         int result = instance.addMedecin(medecin);
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of getMedecin method, of class MedecinManagerImpl.
+     * Test of getMedecin method, of class IMedecinManager.
      */
-    public void testGetMedecin() throws Exception {
+    public void testGetMedecin() {
         System.out.println("getMedecin");
         int id = 0;
-        MedecinManagerImpl instance = new MedecinManagerImpl();
+        IMedecinManager instance = new IMedecinManagerImpl();
         Medecin expResult = null;
         Medecin result = instance.getMedecin(id);
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of updateMedecin method, of class MedecinManagerImpl.
+     * Test of updateMedecin method, of class IMedecinManager.
      */
-    public void testUpdateMedecin() throws Exception {
+    public void testUpdateMedecin() {
         System.out.println("updateMedecin");
         int id = 0;
         Medecin medecin = null;
-        MedecinManagerImpl instance = new MedecinManagerImpl();
+        IMedecinManager instance = new IMedecinManagerImpl();
         Medecin expResult = null;
         Medecin result = instance.updateMedecin(id, medecin);
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of deleteMedecin method, of class MedecinManagerImpl.
+     * Test of deleteMedecin method, of class IMedecinManager.
      */
-    public void testDeleteMedecin() throws Exception {
+    public void testDeleteMedecin() {
         System.out.println("deleteMedecin");
         int id = 0;
-        MedecinManagerImpl instance = new MedecinManagerImpl();
+        IMedecinManager instance = new IMedecinManagerImpl();
         instance.deleteMedecin(id);
+    }
+
+    public class IMedecinManagerImpl implements IMedecinManager {
+
+        public List<Medecin> getAllMedecins() {
+            return null;
+        }
+
+        public int addMedecin(Medecin medecin) {
+            return 0;
+        }
+
+        public Medecin getMedecin(int id) {
+            return null;
+        }
+
+        public Medecin updateMedecin(int id, Medecin medecin) {
+            return null;
+        }
+
+        public void deleteMedecin(int id) {
+        }
     }
     
 }

@@ -6,50 +6,37 @@
 package fr.isima.iae.projetejb.services;
 
 import java.util.Set;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import junit.framework.TestCase;
 
 /**
  *
  * @author Paul
  */
-public class RestApplicationTest {
+public class RestApplicationTest extends TestCase {
     
-    public RestApplicationTest() {
+    public RestApplicationTest(String testName) {
+        super(testName);
     }
     
-    @BeforeClass
-    public static void setUpClass() {
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
     }
     
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+    @Override
+    protected void tearDown() throws Exception {
+        super.tearDown();
     }
 
     /**
      * Test of getClasses method, of class RestApplication.
      */
-    @Test
     public void testGetClasses() {
         System.out.println("getClasses");
         RestApplication instance = new RestApplication();
         Set<Class<?>> expResult = null;
         Set<Class<?>> result = instance.getClasses();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

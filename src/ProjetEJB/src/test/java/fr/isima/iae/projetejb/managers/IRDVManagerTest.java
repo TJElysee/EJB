@@ -14,9 +14,9 @@ import junit.framework.TestCase;
  *
  * @author Paul
  */
-public class RDVManagerImplTest extends TestCase {
+public class IRDVManagerTest extends TestCase {
     
-    public RDVManagerImplTest(String testName) {
+    public IRDVManagerTest(String testName) {
         super(testName);
     }
     
@@ -31,49 +31,66 @@ public class RDVManagerImplTest extends TestCase {
     }
 
     /**
-     * Test of getAllRDV method, of class RDVManagerImpl.
+     * Test of getAllRDV method, of class IRDVManager.
      */
-    public void testGetAllRDV() throws Exception {
+    public void testGetAllRDV() {
         System.out.println("getAllRDV");
-        RDVManagerImpl instance = new RDVManagerImpl();
+        IRDVManager instance = new IRDVManagerImpl();
         List<RDV> expResult = null;
         List<RDV> result = instance.getAllRDV();
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of takeRDV method, of class RDVManagerImpl.
+     * Test of takeRDV method, of class IRDVManager.
      */
-    public void testTakeRDV() throws Exception {
+    public void testTakeRDV() {
         System.out.println("takeRDV");
-        Date date = null;
+        Date d = null;
         int idPatient = 0;
         int idMedecin = 0;
-        RDVManagerImpl instance = new RDVManagerImpl();
+        IRDVManager instance = new IRDVManagerImpl();
         int expResult = 0;
-        int result = instance.takeRDV(date, idPatient, idMedecin);
+        int result = instance.takeRDV(d, idPatient, idMedecin);
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of editRDV method, of class RDVManagerImpl.
+     * Test of editRDV method, of class IRDVManager.
      */
-    public void testEditRDV() throws Exception {
+    public void testEditRDV() {
         System.out.println("editRDV");
         int id = 0;
-        Date date = null;
-        RDVManagerImpl instance = new RDVManagerImpl();
-        instance.editRDV(id, date);
+        Date newDate = null;
+        IRDVManager instance = new IRDVManagerImpl();
+        instance.editRDV(id, newDate);
     }
 
     /**
-     * Test of cancelRDV method, of class RDVManagerImpl.
+     * Test of cancelRDV method, of class IRDVManager.
      */
-    public void testCancelRDV() throws Exception {
+    public void testCancelRDV() {
         System.out.println("cancelRDV");
         int id = 0;
-        RDVManagerImpl instance = new RDVManagerImpl();
+        IRDVManager instance = new IRDVManagerImpl();
         instance.cancelRDV(id);
+    }
+
+    public class IRDVManagerImpl implements IRDVManager {
+
+        public List<RDV> getAllRDV() {
+            return null;
+        }
+
+        public int takeRDV(Date d, int idPatient, int idMedecin) {
+            return 0;
+        }
+
+        public void editRDV(int id, Date newDate) {
+        }
+
+        public void cancelRDV(int id) {
+        }
     }
     
 }

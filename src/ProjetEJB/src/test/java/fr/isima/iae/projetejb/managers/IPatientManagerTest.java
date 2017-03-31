@@ -13,9 +13,9 @@ import junit.framework.TestCase;
  *
  * @author Paul
  */
-public class PatientManagerImplTest extends TestCase {
+public class IPatientManagerTest extends TestCase {
     
-    public PatientManagerImplTest(String testName) {
+    public IPatientManagerTest(String testName) {
         super(testName);
     }
     
@@ -30,61 +30,83 @@ public class PatientManagerImplTest extends TestCase {
     }
 
     /**
-     * Test of getAllPatients method, of class PatientManagerImpl.
+     * Test of getAllPatients method, of class IPatientManager.
      */
-    public void testGetAllPatients() throws Exception {
+    public void testGetAllPatients() {
         System.out.println("getAllPatients");
-        PatientManagerImpl instance = new PatientManagerImpl();
+        IPatientManager instance = new IPatientManagerImpl();
         List<Patient> expResult = null;
         List<Patient> result = instance.getAllPatients();
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of addPatient method, of class PatientManagerImpl.
+     * Test of addPatient method, of class IPatientManager.
      */
-    public void testAddPatient() throws Exception {
+    public void testAddPatient() {
         System.out.println("addPatient");
         Patient patient = null;
-        PatientManagerImpl instance = new PatientManagerImpl();
+        IPatientManager instance = new IPatientManagerImpl();
         int expResult = 0;
         int result = instance.addPatient(patient);
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of getPatient method, of class PatientManagerImpl.
+     * Test of getPatient method, of class IPatientManager.
      */
-    public void testGetPatient() throws Exception {
+    public void testGetPatient() {
         System.out.println("getPatient");
         int id = 0;
-        PatientManagerImpl instance = new PatientManagerImpl();
+        IPatientManager instance = new IPatientManagerImpl();
         Patient expResult = null;
         Patient result = instance.getPatient(id);
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of updatePatient method, of class PatientManagerImpl.
+     * Test of updatePatient method, of class IPatientManager.
      */
-    public void testUpdatePatient() throws Exception {
+    public void testUpdatePatient() {
         System.out.println("updatePatient");
         int id = 0;
         Patient patient = null;
-        PatientManagerImpl instance = new PatientManagerImpl();
+        IPatientManager instance = new IPatientManagerImpl();
         Patient expResult = null;
         Patient result = instance.updatePatient(id, patient);
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of deletePatient method, of class PatientManagerImpl.
+     * Test of deletePatient method, of class IPatientManager.
      */
-    public void testDeletePatient() throws Exception {
+    public void testDeletePatient() {
         System.out.println("deletePatient");
         int id = 0;
-        PatientManagerImpl instance = new PatientManagerImpl();
+        IPatientManager instance = new IPatientManagerImpl();
         instance.deletePatient(id);
+    }
+
+    public class IPatientManagerImpl implements IPatientManager {
+
+        public List<Patient> getAllPatients() {
+            return null;
+        }
+
+        public int addPatient(Patient patient) {
+            return 0;
+        }
+
+        public Patient getPatient(int id) {
+            return null;
+        }
+
+        public Patient updatePatient(int id, Patient patient) {
+            return null;
+        }
+
+        public void deletePatient(int id) {
+        }
     }
     
 }

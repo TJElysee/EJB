@@ -14,9 +14,9 @@ import junit.framework.TestCase;
  *
  * @author Paul
  */
-public class CreneauxManagerImplTest extends TestCase {
+public class ICreneauxManagerTest extends TestCase {
     
-    public CreneauxManagerImplTest(String testName) {
+    public ICreneauxManagerTest(String testName) {
         super(testName);
     }
     
@@ -31,49 +31,67 @@ public class CreneauxManagerImplTest extends TestCase {
     }
 
     /**
-     * Test of getAllCreneaux method, of class CreneauxManagerImpl.
+     * Test of getAllCreneaux method, of class ICreneauxManager.
      */
-    public void testGetAllCreneaux() throws Exception {
+    public void testGetAllCreneaux() {
         System.out.println("getAllCreneaux");
-        CreneauxManagerImpl instance = new CreneauxManagerImpl();
+        ICreneauxManager instance = new ICreneauxManagerImpl();
         List<Creneaux> expResult = null;
         List<Creneaux> result = instance.getAllCreneaux();
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of getAllFreeCreneaux method, of class CreneauxManagerImpl.
+     * Test of getAllFreeCreneaux method, of class ICreneauxManager.
      */
-    public void testGetAllFreeCreneaux() throws Exception {
+    public void testGetAllFreeCreneaux() {
         System.out.println("getAllFreeCreneaux");
-        CreneauxManagerImpl instance = new CreneauxManagerImpl();
+        ICreneauxManager instance = new ICreneauxManagerImpl();
         List<Creneaux> expResult = null;
         List<Creneaux> result = instance.getAllFreeCreneaux();
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of addCreneau method, of class CreneauxManagerImpl.
+     * Test of addCreneau method, of class ICreneauxManager.
      */
-    public void testAddCreneau() throws Exception {
+    public void testAddCreneau() {
         System.out.println("addCreneau");
         Date debut = null;
         Date fin = null;
         int idMedecin = 0;
-        CreneauxManagerImpl instance = new CreneauxManagerImpl();
+        ICreneauxManager instance = new ICreneauxManagerImpl();
         int expResult = 0;
         int result = instance.addCreneau(debut, fin, idMedecin);
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of removeCreneau method, of class CreneauxManagerImpl.
+     * Test of removeCreneau method, of class ICreneauxManager.
      */
-    public void testRemoveCreneau() throws Exception {
+    public void testRemoveCreneau() {
         System.out.println("removeCreneau");
         int id = 0;
-        CreneauxManagerImpl instance = new CreneauxManagerImpl();
+        ICreneauxManager instance = new ICreneauxManagerImpl();
         instance.removeCreneau(id);
+    }
+
+    public class ICreneauxManagerImpl implements ICreneauxManager {
+
+        public List<Creneaux> getAllCreneaux() {
+            return null;
+        }
+
+        public List<Creneaux> getAllFreeCreneaux() {
+            return null;
+        }
+
+        public int addCreneau(Date debut, Date fin, int idMedecin) {
+            return 0;
+        }
+
+        public void removeCreneau(int id) {
+        }
     }
     
 }

@@ -7,42 +7,31 @@ package fr.isima.iae.projetejb.services;
 
 import fr.isima.iae.projetejb.entities.Creneaux;
 import java.util.List;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import junit.framework.TestCase;
 
 /**
  *
  * @author Paul
  */
-public class CreneauRestServiceTest {
+public class CreneauRestServiceTest extends TestCase {
     
-    public CreneauRestServiceTest() {
+    public CreneauRestServiceTest(String testName) {
+        super(testName);
     }
     
-    @BeforeClass
-    public static void setUpClass() {
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
     }
     
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+    @Override
+    protected void tearDown() throws Exception {
+        super.tearDown();
     }
 
     /**
      * Test of create method, of class CreneauRestService.
      */
-    @Test
     public void testCreate() {
         System.out.println("create");
         Creneaux c = null;
@@ -50,22 +39,17 @@ public class CreneauRestServiceTest {
         int expResult = 0;
         int result = instance.create(c);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of getCreneaux method, of class CreneauRestService.
      */
-    @Test
     public void testGetCreneaux() {
         System.out.println("getCreneaux");
         CreneauRestService instance = new CreneauRestService();
         List<Creneaux> expResult = null;
         List<Creneaux> result = instance.getCreneaux();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
