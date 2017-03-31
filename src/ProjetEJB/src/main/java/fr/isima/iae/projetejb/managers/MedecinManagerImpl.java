@@ -18,8 +18,8 @@ import javax.persistence.Query;
  */
 @Stateless(name = "Med")
 public class MedecinManagerImpl implements IMedecinManager{
+    
     @PersistenceContext(unitName = "fr.isima.iae_ProjetEJB_PU_CabinetMedical")
-    //@PersistenceContext
     private EntityManager em;
     
     @Override
