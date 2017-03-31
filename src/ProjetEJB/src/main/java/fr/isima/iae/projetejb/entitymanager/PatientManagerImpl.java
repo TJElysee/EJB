@@ -7,6 +7,8 @@ package fr.isima.iae.projetejb.entitymanager;
 
 import fr.isima.iae.projetejb.entities.Patient;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 /**
  *
@@ -14,29 +16,46 @@ import java.util.List;
  */
 public class PatientManagerImpl implements IPatientManager {
 
+    //@PersistenceContext(unitName = "UP")
+    private EntityManager em;
     @Override
     public List<Patient> getAllPatients() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Query q = em.createQuery("select p from Patient p");
+        return q.getResultList(); 
     }
 
     @Override
     public int addPatient(Patient patient) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        em.persist(patient);
+        return patient.getId();
     }
 
     @Override
     public Patient getPatient(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Patient p = em.find(Patient.class, id);
+        /*
+        if(m == null)
+            throw new RuntimeException("Patient introuvable");
+        //*/
+        return p;
     }
 
     @Override
     public Patient updatePatient(int id, Patient patient) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Patient p = em.find(Patient.class, patient);
+        if(p != null){
+            p.setNom(patient.getNom());
+            p.setPrenom(patient.getPrenom());
+            p.setRdvs(patient.getRdvs());
+        }
+        
+        return p;
     }
 
     @Override
     public void deletePatient(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         Patient p = em.find(Patient.class, id);
+        em.remove(p);
     }
     
 }
