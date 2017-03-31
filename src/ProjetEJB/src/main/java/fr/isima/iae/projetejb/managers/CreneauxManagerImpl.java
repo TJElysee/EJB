@@ -33,11 +33,15 @@ public class CreneauxManagerImpl implements ICreneauxManager {
     @Override
     public List<Creneaux> getAllFreeCreneaux(){
         List<Creneaux> crens = getAllCreneaux();
-        List<Creneaux> res = new ArrayList<>();
-        for( Creneaux cren : crens){
-            if(cren.getRdv() != null) {
-            } else {
-                res.add(cren);
+        List<Creneaux> res = null; 
+        if(!crens.isEmpty()){
+            res = new ArrayList<>();
+        
+            for( Creneaux cren : crens){
+                if(cren.getRdv() != null) {
+                } else {
+                    res.add(cren);
+                }
             }
         }
         return res;
