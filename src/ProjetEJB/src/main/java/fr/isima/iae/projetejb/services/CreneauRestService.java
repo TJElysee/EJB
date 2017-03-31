@@ -6,7 +6,7 @@
 package fr.isima.iae.projetejb.services;
 
 import fr.isima.iae.projetejb.entities.Creneaux;
-import fr.isima.iae.projetejb.managers.ICabinetMedical;
+import fr.isima.iae.projetejb.managers.ICreneauxManager;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
@@ -22,6 +22,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import fr.isima.iae.projetejb.managers.IRDVManager;
 
 
 
@@ -38,19 +39,26 @@ public class CreneauRestService {
     private static final Logger LOGGER = Logger.getLogger(PatientRestService.class.getName()) ;
     
     @EJB
-    private ICabinetMedical cabMed;
+    private ICreneauxManager crenMan;
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public int create(Creneaux c) {
         LOGGER.log(Level.INFO, "POST /creneaux");
-        return cabMed.addCreneau(c.getDebut(), c.getFin(), c.getMedecin().getId());
+        return crenMan.addCreneau(c.getDebut(), c.getFin(), c.getMedecin().getId());
     }
-
+    
+    /*
+    @GET
+    public List<Creneaux> getCreneauxLibres() {
+        LOGGER.log(Level.INFO, "GET /creneaux");
+        return cabMed.getAllFreeCreneaux();
+    }
+    //*/
 
      @GET
     public List<Creneaux> getCreneaux() {
         LOGGER.log(Level.INFO, "GET /AllCreneaux");
-        return cabMed.getAllCreneaux();
+        return crenMan.getAllCreneaux();
     }
 }

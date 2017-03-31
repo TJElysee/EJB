@@ -14,12 +14,7 @@ import java.util.List;
  *
  * @author User
  */
-public interface ICabinetMedical {
-    public List<Creneaux> getAllCreneaux();
-    public List<Creneaux> getAllFreeCreneaux();
-    public int addCreneau(Date debut, Date fin, int idMedecin);
-    public void removeCreneau(int id);
-    
+public interface IRDVManager {
     public List<RDV> getAllRDV();
     public int takeRDV(Date d, int idPatient, int idMedecin);
     public void editRDV(int id, Date newDate);

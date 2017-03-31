@@ -12,6 +12,7 @@ import fr.isima.iae.projetejb.entities.RDV;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -20,55 +21,16 @@ import javax.persistence.Query;
  *
  * @author User
  */
-public class CabinetMedicalImpl implements ICabinetMedical{
+@Stateless(name="rdvous")
+public class RDVManagerImpl implements IRDVManager{
 
     @PersistenceContext(unitName = "fr.isima.iae_ProjetEJB_PU_CabinetMedical")
     private EntityManager em;
     
-    @Override
-    public List<Creneaux> getAllCreneaux() {
-        Query q = em.createQuery("select c from Creneau c");
-        return q.getResultList();
-    }
-    
-    @Override
-    public List<Creneaux> getAllFreeCreneaux(){
-        List<Creneaux> crens = getAllCreneaux();
-        List<Creneaux> res = new ArrayList<>();
-        for( Creneaux cren : crens){
-            if(cren.getRdv() != null) {
-            } else {
-                res.add(cren);
-            }
-        }
-        return res;
-    }
-
-    @Override
-    public int addCreneau(Date debut, Date fin, int idMedecin) {
-        Medecin med = em.find(Medecin.class, idMedecin);
-        Creneaux cren = null;
-        cren = new Creneaux(debut, fin, med);
-        
-        em.persist(cren);
-        /*
-        if( m == null)
-            throw new RuntimeException("Médecin inexistant");
-        //*/
-
-        return cren.getId();
-        
-    }
-
-    @Override
-    public void removeCreneau(int id) {
-        Creneaux creneau = em.find(Creneaux.class, id);
-        em.remove(creneau);
-    }
 
     @Override
     public List<RDV> getAllRDV() {
-        Query q = em.createQuery("select r from Rdv r");
+        Query q = em.createQuery("select r from RDV r");
         return q.getResultList();
     }
 
@@ -133,7 +95,7 @@ public class CabinetMedicalImpl implements ICabinetMedical{
         RDV rdv = em.find(RDV.class, id);
         
         int idCren = rdv.getCreneau().getId();
-        Creneaux cren = em.find(Creneaux.class, id);
+        Creneaux cren = em.find(Creneaux.class, idCren);
         cren.setRdv(null);
         
         em.remove(rdv);

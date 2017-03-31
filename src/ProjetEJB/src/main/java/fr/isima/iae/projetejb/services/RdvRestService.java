@@ -6,7 +6,6 @@
 package fr.isima.iae.projetejb.services;
 
 import fr.isima.iae.projetejb.entities.RDV;
-import fr.isima.iae.projetejb.managers.ICabinetMedical;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -21,6 +20,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import fr.isima.iae.projetejb.managers.IRDVManager;
 
 
 
@@ -37,19 +37,19 @@ public class RdvRestService {
     private static final Logger LOGGER = Logger.getLogger(RdvRestService.class.getName()) ;
     
     @EJB
-    private ICabinetMedical cabMed;
+    private IRDVManager rdvMan;
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public int create(RDV r) {
         LOGGER.log(Level.INFO, "POST /rdvs");
-        return cabMed.takeRDV(r.getCreneau().getDebut(), r.getPatient().getId(), r.getCreneau().getMedecin().getId());
+        return rdvMan.takeRDV(r.getCreneau().getDebut(), r.getPatient().getId(), r.getCreneau().getMedecin().getId());
     }
     
     @GET
     public List<RDV> getAll() {
         LOGGER.log(Level.INFO, "GET /rdvs");
-        return cabMed.getAllRDV();
+        return rdvMan.getAllRDV();
     }
     
     @Path("/{id}")
@@ -60,7 +60,7 @@ public class RdvRestService {
         LOGGER.log(Level.INFO, "PUT /rdvs/{0}", id);
         LOGGER.log(Level.INFO, r.toString());
 
-        cabMed.editRDV(id, r.getCreneau().getDebut());
+        rdvMan.editRDV(id, r.getCreneau().getDebut());
     }
     
     @Path("/{id}")
@@ -68,6 +68,6 @@ public class RdvRestService {
     public void delete(@PathParam("id") int id)
     {
         LOGGER.log(Level.INFO, "DELETE /rdvs/{0}", id);
-        cabMed.cancelRDV(id);
+        rdvMan.cancelRDV(id);
     } 
 }
