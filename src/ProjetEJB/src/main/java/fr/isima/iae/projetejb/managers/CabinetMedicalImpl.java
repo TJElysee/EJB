@@ -45,15 +45,18 @@ public class CabinetMedicalImpl implements ICabinetMedical{
     }
 
     @Override
-    public void addCreneau(Date debut, Date fin, int idMedecin) {
+    public int addCreneau(Date debut, Date fin, int idMedecin) {
         Medecin med = em.find(Medecin.class, idMedecin);
+        Creneaux cren = null;
+        cren = new Creneaux(debut, fin, med);
+        
+        em.persist(cren);
         /*
         if( m == null)
-            throw new RuntimeException("Médecin introuvable");
+            throw new RuntimeException("Médecin inexistant");
         //*/
-        if (med != null){
-            em.persist(new Creneaux(debut, fin, med));
-        }
+
+        return cren.getId();
         
     }
 
@@ -70,7 +73,7 @@ public class CabinetMedicalImpl implements ICabinetMedical{
     }
 
     @Override
-    public void takeRDV(Date date, int idPatient, int idMedecin) {
+    public int takeRDV(Date date, int idPatient, int idMedecin) {
         Query q = em.createQuery("select c from Creneaux c where c.debut = :d and c.medecin.id = :m");
         q.setParameter("d", date);
         q.setParameter("m", idMedecin);
@@ -87,9 +90,11 @@ public class CabinetMedicalImpl implements ICabinetMedical{
                 crens.get(0).setRdv(rdv);
                 
                 em.persist(rdv);
+                return rdv.getId();
             }
             
         }
+        return -1;
     }
 
     @Override
