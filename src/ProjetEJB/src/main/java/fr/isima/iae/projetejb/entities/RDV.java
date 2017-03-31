@@ -25,6 +25,7 @@ public class RDV {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
+    
     @ManyToOne
     @JoinColumn(name = "idPatient")
     private Patient patient;
