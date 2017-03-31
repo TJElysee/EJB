@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -36,8 +37,8 @@ public class Creneaux implements Serializable{
     @JoinColumn(name = "idMedecin") 
     private Medecin medecin;
     
-    @OneToMany(mappedBy = "creneaux", fetch = FetchType.LAZY)
-    private Collection<RDV> rdvs;
+    @OneToOne(mappedBy = "creneaux", fetch = FetchType.LAZY)
+    private RDV rdv;
     
     public Creneaux() {
     }
@@ -46,6 +47,8 @@ public class Creneaux implements Serializable{
         this.debut = debut;
         this.fin = fin;
         this.medecin = medecin;
+        
+        this.rdv = null;
     }
 
     public int getId() {
@@ -79,5 +82,19 @@ public class Creneaux implements Serializable{
     public void setMedecin(Medecin medecin) {
         this.medecin = medecin;
     }  
+
+    /**
+     * @return the rdv
+     */
+    public RDV getRdv() {
+        return rdv;
+    }
+
+    /**
+     * @param rdv the rdv to set
+     */
+    public void setRdv(RDV rdv) {
+        this.rdv = rdv;
+    }
     
 }

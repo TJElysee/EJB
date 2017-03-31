@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -24,24 +25,19 @@ public class RDV {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
-    private Date debut;
-    
-    private Date fin;
-    
     @ManyToOne
     @JoinColumn(name = "idPatient")
     private Patient patient;
     
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "idCreneau")
     private Creneaux creneau;
 
     public RDV() {
     }
 
-    public RDV(Date debut, Date fin, Patient patient) {
-        this.debut = debut;
-        this.fin = fin;
+    public RDV(Creneaux creneau, Patient patient) {
+        this.creneau = creneau;
         this.patient = patient;
     }
     
@@ -49,25 +45,10 @@ public class RDV {
         return id;
     }
 
-    public Date getDebut() {
-        return debut;
-    }
-
-    public Date getFin() {
-        return fin;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setDebut(Date debut) {
-        this.debut = debut;
-    }
-
-    public void setFin(Date fin) {
-        this.fin = fin;
-    }    
 
     public Patient getPatient() {
         return patient;
