@@ -46,12 +46,7 @@ public class CreneauRestService {
         LOGGER.log(Level.INFO, "POST /creneaux");
         return cabMed.addCreneau(c.getDebut(), c.getFin(), c.getMedecin().getId());
     }
-    
-    @GET
-    public List<Creneaux> getCreneauxLibres() {
-        LOGGER.log(Level.INFO, "GET /creneaux");
-        return cabMed.getAllFreeCreneaux();
-    }
+
 
      @GET
     public List<Creneaux> getCreneaux() {

@@ -55,12 +55,12 @@ public class RdvRestService {
     @Path("/{id}")
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public void update(@PathParam("id") int id, RDV r, Date newDate) 
+    public void update(@PathParam("id") int id, RDV r) 
     {
         LOGGER.log(Level.INFO, "PUT /rdvs/{0}", id);
         LOGGER.log(Level.INFO, r.toString());
 
-        cabMed.editRDV(id, newDate);
+        cabMed.editRDV(id, r.getCreneau().getDebut());
     }
     
     @Path("/{id}")
