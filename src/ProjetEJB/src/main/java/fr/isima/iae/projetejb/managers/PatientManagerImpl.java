@@ -3,21 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.isima.iae.projetejb.entitymanager;
+package fr.isima.iae.projetejb.managers;
 
 import fr.isima.iae.projetejb.entities.Patient;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 /**
  *
  * @author User
  */
+
+@Stateless(name = "Pat")
 public class PatientManagerImpl implements IPatientManager {
 
-    //@PersistenceContext(unitName = "UP")
+    @PersistenceContext(unitName = "fr.isima.iae_ProjetEJB_PU_CabinetMedical")
+    //@PersistenceContext
     private EntityManager em;
+    
     @Override
     public List<Patient> getAllPatients() {
         Query q = em.createQuery("select p from Patient p");

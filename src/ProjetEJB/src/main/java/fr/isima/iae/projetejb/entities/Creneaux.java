@@ -35,7 +35,7 @@ public class Creneaux implements Serializable{
     @JoinColumn(name = "idMedecin") 
     private Medecin medecin;
     
-    @OneToOne(mappedBy = "creneaux", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "creneau", fetch = FetchType.LAZY)
     private RDV rdv;
     
     public Creneaux() {

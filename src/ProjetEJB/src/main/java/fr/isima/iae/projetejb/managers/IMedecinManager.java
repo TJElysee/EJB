@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.isima.iae.projetejb.entitymanager;
+package fr.isima.iae.projetejb.managers;
 
 import fr.isima.iae.projetejb.entities.Medecin;
 import java.util.List;

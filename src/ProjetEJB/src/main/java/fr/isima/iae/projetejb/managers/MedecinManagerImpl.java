@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.isima.iae.projetejb.entitymanager;
+package fr.isima.iae.projetejb.managers;
 
 import fr.isima.iae.projetejb.entities.Medecin;
 import java.util.List;
@@ -16,10 +16,10 @@ import javax.persistence.Query;
  *
  * @author Users
  */
-@Stateless(name = "Medecin")
+@Stateless(name = "Med")
 public class MedecinManagerImpl implements IMedecinManager{
-
-    //@PersistenceContext(unitName = "UP")
+    @PersistenceContext(unitName = "fr.isima.iae_ProjetEJB_PU_CabinetMedical")
+    //@PersistenceContext
     private EntityManager em;
     
     @Override
