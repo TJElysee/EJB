@@ -16,6 +16,7 @@ import java.util.List;
  */
 public interface ICabinetMedical {
     public List<Creneaux> getAllCreneaux();
+    public List<Creneaux> getAllFreeCreneaux();
     public void addCreneau(Date debut, Date fin, int idMedecin);
     public void removeCreneau(int id);
     

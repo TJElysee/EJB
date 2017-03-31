@@ -9,6 +9,7 @@ import fr.isima.iae.projetejb.entities.Creneaux;
 import fr.isima.iae.projetejb.entities.Medecin;
 import fr.isima.iae.projetejb.entities.Patient;
 import fr.isima.iae.projetejb.entities.RDV;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -28,6 +29,19 @@ public class CabinetMedicalImpl implements ICabinetMedical{
     public List<Creneaux> getAllCreneaux() {
         Query q = em.createQuery("select c from Creneau c");
         return q.getResultList();
+    }
+    
+    @Override
+    public List<Creneaux> getAllFreeCreneaux(){
+        List<Creneaux> crens = getAllCreneaux();
+        List<Creneaux> res = new ArrayList<>();
+        for( Creneaux cren : crens){
+            if(cren.getRdv() != null) {
+            } else {
+                res.add(cren);
+            }
+        }
+        return res;
     }
 
     @Override
